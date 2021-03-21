@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"  >
+<head>
+    <meta charset="UTF-8">
+    <title>测试thymeleaf</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/test.css}">
+</head>
+<body>
+<span th:text="${name}"></span>
+<hr>
+<!--实体类模型操作-->
+<span th:text="${user.uid}"></span>
+<span th:text="${user.uname}">1</span>
+<hr>
+<!--map类型数据操作-->
+<img th:src="${image[key1]}">
+<hr>
+<!--实现集合的遍历-->
+<p th:each="u,iterStat : ${list}">
+    <span th:text="${iterStat.index}"></span>
+    <span th:text="${u.uid}"></span>
+    <span th:text="${u.uid}"></span>
+</p>
+<hr>
+<!--字符串的拼接-->
+<span th:text="'我的名字是'+${username}"></span>
+<span th:text="|我的名字是${username}|"></span>
+<hr>
+<!--实现判断选择操作-->
+<span th:if="${flag=='y'}">:if成立</span>
+<span th:unless="${flag=='y'}">:unless成立</span>
+<span th:switch="${flag}">
+    <span th:case="y">case="y"成立</span>
+    <span th:case="n">:case="不成立</span>
+</span>
+<hr>
+<!--内置对象的操作-->
+<p th:text="${#dates.format(date,'yyyy-MM-dd HH:mm:ss')}"></p>
+<p th:text="${#numbers.formatDecimal(num,1,2)}"></p>
+<p th:text="${#strings.abbreviate(desc,60)}"></p>
+</body>
+</html>
